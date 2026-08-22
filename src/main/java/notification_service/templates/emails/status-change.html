@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
+        .container { max-width: 600px; margin: 40px auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header { background-color: #2563EB; padding: 30px; text-align: center; }
+        .header h1 { color: #ffffff; margin: 0; font-size: 24px; }
+        .body { padding: 30px; }
+        .status-badge { display: inline-block; background-color: #DBEAFE; color: #1D4ED8; padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 14px; margin: 10px 0; }
+        .company-info { background-color: #F8FAFC; border-left: 4px solid #2563EB; padding: 15px; margin: 20px 0; border-radius: 4px; }
+        .button { display: inline-block; background-color: #2563EB; color: #ffffff; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold; margin: 20px 0; }
+        .footer { background-color: #F8FAFC; padding: 20px; text-align: center; color: #6B7280; font-size: 12px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Application Status Update</h1>
+    </div>
+    <div class="body">
+        <p>Hi <strong th:text="${userName}">User</strong>,</p>
+        <p>Your job application status has been updated!</p>
+
+        <div class="company-info">
+            <strong th:text="${jobTitle}">Job Title</strong><br>
+            <span th:text="${companyName}">Company Name</span>
+        </div>
+
+        <p>New Status:</p>
+        <span class="status-badge" th:text="${newStatus}">APPLIED</span>
+
+        <p th:if="${newStatus == 'INTERVIEW_SCHEDULED'}">
+            🎉 Congratulations! You have an interview scheduled.
+            Make sure to prepare using our Interview Prep feature!
+        </p>
+        <p th:if="${newStatus == 'OFFER_RECEIVED'}">
+            🎊 Amazing news! You received an offer. Time to celebrate!
+        </p>
+        <p th:if="${newStatus == 'REJECTED'}">
+            Keep going! Every rejection is one step closer to the right opportunity.
+            Update your resume and apply to more positions.
+        </p>
+
+        <a th:href="${dashboardUrl}" class="button">View Your Applications</a>
+    </div>
+    <div class="footer">
+        <p>Job Tracker AI — Your career companion</p>
+        <p>You're receiving this because you use Job Tracker AI to manage your applications.</p>
+    </div>
+</div>
+</body>
+</html>

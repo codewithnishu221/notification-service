@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
+        .container { max-width: 600px; margin: 40px auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header { background-color: #F59E0B; padding: 30px; text-align: center; }
+        .header h1 { color: #ffffff; margin: 0; font-size: 24px; }
+        .body { padding: 30px; }
+        .days-badge { font-size: 48px; font-weight: bold; color: #F59E0B; text-align: center; display: block; margin: 20px 0; }
+        .tip-box { background-color: #FFFBEB; border: 1px solid #FCD34D; padding: 15px; border-radius: 8px; margin: 20px 0; }
+        .button { display: inline-block; background-color: #F59E0B; color: #ffffff; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold; margin: 20px 0; }
+        .footer { background-color: #F8FAFC; padding: 20px; text-align: center; color: #6B7280; font-size: 12px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>⏰ Time to Follow Up?</h1>
+    </div>
+    <div class="body">
+        <p>Hi <strong th:text="${userName}">User</strong>,</p>
+        <p>You applied to <strong th:text="${jobTitle}">Job Title</strong>
+            at <strong th:text="${companyName}">Company</strong></p>
+
+        <span class="days-badge" th:text="${daysSinceApplied} + ' days ago'">7 days ago</span>
+
+        <div class="tip-box">
+            <strong>💡 Follow-up Tip:</strong><br>
+            Sending a brief, professional follow-up email to the recruiter after 7-10 days
+            can increase your response rate by up to 40%. Keep it short — just express
+            continued interest and ask about the timeline.
+        </div>
+
+        <p>Haven't heard back yet? Update your application status to keep your tracker current.</p>
+
+        <a th:href="${dashboardUrl}" class="button">Update Application Status</a>
+    </div>
+    <div class="footer">
+        <p>Job Tracker AI — Your career companion</p>
+    </div>
+</div>
+</body>
+</html>
