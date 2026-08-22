@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
+        .container { max-width: 600px; margin: 40px auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header { background-color: #059669; padding: 30px; text-align: center; }
+        .header h1 { color: #ffffff; margin: 0; font-size: 24px; }
+        .body { padding: 30px; }
+        .checklist { list-style: none; padding: 0; }
+        .checklist li { padding: 10px 0; border-bottom: 1px solid #E5E7EB; }
+        .checklist li:before { content: "✅ "; }
+        .button { display: inline-block; background-color: #059669; color: #ffffff; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold; margin: 20px 0; }
+        .footer { background-color: #F8FAFC; padding: 20px; text-align: center; color: #6B7280; font-size: 12px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>🎯 Interview Tomorrow!</h1>
+    </div>
+    <div class="body">
+        <p>Hi <strong th:text="${userName}">User</strong>,</p>
+        <p>Your interview for <strong th:text="${jobTitle}">Job Title</strong>
+            at <strong th:text="${companyName}">Company</strong> is tomorrow!</p>
+
+        <p><strong>Last-minute checklist:</strong></p>
+        <ul class="checklist">
+            <li>Review the job description one more time</li>
+            <li>Practice your introduction (Tell me about yourself)</li>
+            <li>Prepare 2-3 questions to ask the interviewer</li>
+            <li>Check the interview format (video/in-person/phone)</li>
+            <li>Review your tailored resume that you submitted</li>
+            <li>Get a good night's sleep tonight</li>
+        </ul>
+
+        <p>Review your interview prep questions to feel confident tomorrow:</p>
+        <a th:href="${prepUrl}" class="button">View Your Prep Plan</a>
+    </div>
+    <div class="footer">
+        <p>Job Tracker AI — You've got this! 💪</p>
+    </div>
+</div>
+</body>
+</html>

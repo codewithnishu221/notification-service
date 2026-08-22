@@ -12,7 +12,19 @@ spring:
         spring.json.trusted.packages: "*"
         spring.json.use.type.headers: false
         spring.json.value.default.type: notification_service.events.ApplicationStatusEvent
-
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${GMAIL_USERNAME}
+    password: ${GMAIL_APP_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+        debug: false
 server:
   port: 8084
 
@@ -22,3 +34,9 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
   instance:
     prefer-ip-address: true
+
+app:
+  mail:
+    from: ${GMAIL_USERNAME}
+    from-name: "Job Tracker AI"
+  frontend-url: http://localhost:3000
