@@ -36,7 +36,7 @@ public class EmailService {
         variables.put("newStatus", newStatus);
         context.setVariables(variables);
 
-         String renderHtml = templateEngine.process("status-change", context);
+         String renderHtml = templateEngine.process("emails/status-change", context);
          String subject = "Application Update: {jobTitle} at {companyName}";
           sendHtmlEmail(toEmail, subject, renderHtml);
     }
@@ -48,7 +48,7 @@ public class EmailService {
         contextVariables.put("jobTitle", jobTitle);
         contextVariables.put("daysSinceApplied", daysSinceApplied);
         contextVariables.put("companyName", companyName);
-        String htmlTemplate = templateEngine.process("follow-up-reminder", context);
+        String htmlTemplate = templateEngine.process("emails/follow-up-reminder", context);
         sendHtmlEmail(toEmail, subject, htmlTemplate);
     }
     public void sendInterviewReminderEmail(String toEmail, String userName, String companyName, String jobTitle){
@@ -59,7 +59,7 @@ public class EmailService {
         variables.put("companyName", companyName);
         variables.put("jobTitle", jobTitle);
         context.setVariables(variables);
-        String htmlTemplate = templateEngine.process("interview-reminder", context);
+        String htmlTemplate = templateEngine.process("emails/interview-reminder", context);
         sendHtmlEmail(toEmail, subject, htmlTemplate );
     }
 
@@ -67,7 +67,7 @@ public class EmailService {
         try{
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
-            helper.setFrom(new InternetAddress(fromName, fromEmail));
+            helper.setFrom(new InternetAddress(fromEmail, fromName));
             helper.setTo(to);
             helper.setSubject(subject);
             helper.setText(htmlContent, true);
