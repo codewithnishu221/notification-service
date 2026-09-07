@@ -18,7 +18,7 @@ public class ScheduledNotificationService {
     private final RestClient restClient; // calls Tracker Service
 
     // runs every day at 9 AM
-    @Scheduled(cron = "0 */2 * * * ?")
+    @Scheduled(cron = "0 * 9 * * ?")
     public void sendFollowUpReminders() {
         log.info("Running follow-up reminder scheduled job");
 
